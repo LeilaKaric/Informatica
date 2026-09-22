@@ -7,11 +7,18 @@ public class Stagione {
     private String trama;
     private int numStagione;
 
-    public Stagione{
-
+    public Stagione(int numEpisodi, String nomeSceneggiatore, String trama, int numStagione)throws Exception{
+        try {
+            setEpisodio(numEpisodi);
+            setStagione(numStagione);
+            setTrama(trama);
+            setnomeSceneggiatore(nomeSceneggiatore);
+        } catch (Exception e) {
+            throw new Exception("Errore: ");
+        }
     }
 
-    public void setEpisodio (int numEpisodi){
+    public void setEpisodio (int numEpisodi)throws Exception{
         if (numEpisodi > 0){
             this.numEpisodi = numEpisodi;
         }
@@ -20,7 +27,7 @@ public class Stagione {
         }
     }
 
-    public void setnomeSceneggiatore (String nomeSceneggiatore){
+    public void setnomeSceneggiatore (String nomeSceneggiatore)throws Exception{
         if (!nomeSceneggiatore.isBlank()){
             this.nomeSceneggiatore = nomeSceneggiatore;
         }
@@ -29,7 +36,7 @@ public class Stagione {
         }
     }
 
-    public void setTrama (String trama){
+    public void setTrama (String trama)throws Exception{
         if (!trama.isBlank()){
             this.trama = trama;
         }
@@ -38,7 +45,7 @@ public class Stagione {
         }
     }
 
-    public void setStagione (int numStagione){
+    public void setStagione (int numStagione)throws Exception{
         if (numStagione > 0){
             this.numStagione = numStagione;
         }
@@ -51,5 +58,21 @@ public class Stagione {
         return this.numEpisodi;
     }
 
-    public String getSceneggiatore 
+    public String getSceneggiatore(){
+        return this.nomeSceneggiatore;
+    }
+
+    public String getTrama(){
+        return this.trama;
+    }
+
+    public int getStagione(){
+        return this.numStagione;
+    }
+
+    @Override //sovrascritto
+    public String toString(){
+        String separatore = ",";
+        return this.numEpisodi + separatore + this.nomeSceneggiatore + separatore + this.trama + separatore + this.numStagione;
+    }
 }
